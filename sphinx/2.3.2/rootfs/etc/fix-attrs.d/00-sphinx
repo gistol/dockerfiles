@@ -1,0 +1,2 @@
+/var/lib/sphinx true sphinx 0644 0755
+/var/log/sphinx true sphinx 0644 0755

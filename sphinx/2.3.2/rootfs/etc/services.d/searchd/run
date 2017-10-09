@@ -1,0 +1,4 @@
+#!/usr/bin/execlineb -P
+
+s6-setuidgid sphinx
+searchd --config /etc/sphinx/sphinx.conf --nodetach
