@@ -1,5 +1,9 @@
 ## Sphinx 2.3.2
 
+### Supported tags and respective `Dockerfile` links
+
+-	[`beta`, `2.3.2` (sphinx/2.3.2/Dockerfile*)](https://github.com/bborysenko/dockerfiles/blob/master/sphinx/2.3.2/Dockerfile)
+
 ### Usage
 
 Create data dir and your configuration file with SQL source and index:
