@@ -25,6 +25,15 @@ RUN set -xe \
         su-exec \
         tar
 
+### s6-overlay #################################################################
+# Пока используем 1.21.2.0 - https://github.com/just-containers/s6-overlay/issues/222
+ENV S6_OVERLAY_VERSION=1.21.2.0
+
+RUN set -xe \
+    && curl -sSfL https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz \
+        | tar xzf - -C /
+
+ENTRYPOINT [ "/init" ]
 ### Nginx ######################################################################
 
 # # Честно спизжено тут https://github.com/nginxinc/docker-nginx/blob/c8bfb9b5260d4ad308deac5343b73b027f684375/mainline/alpine/Dockerfile
