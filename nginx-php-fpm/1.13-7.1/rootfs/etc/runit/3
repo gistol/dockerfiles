@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+set -eux
+
+env | sort
+
+echo 'Waiting for services to stop...'

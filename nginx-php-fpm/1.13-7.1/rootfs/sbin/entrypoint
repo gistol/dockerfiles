@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -eu
+
+function app:start:help() {
+  echo '  app:start        Starts and monitors a collection of runit services'
+}
+
+function app:start() {
+  exec /init
+}
+
+function app:worker() {
+  su-exec $APP_USER exec
+  #exec su-exec ${APP_USER} bash -c '/usr/bin/php ${APP_DIR}/cgi-bin/silex/console "$1"'
+}
+
+function app:help {
+  echo 'Available options:'
+  echo '  app:start        Starts and monitors a collection of runit services'
+  echo '  app:worker       Displays the help'
+  echo '  [command]        Execute the specified command, eg. bash.'
+}
+
+function include () {
+  # shellcheck source=/dev/null
+  [[ -f "$1" ]] && source "$1"
+}
+
+function main() {
+  if declare -f $1 > /dev/null; then
+    "$@"
+  elif command -v $1 >/dev/null 2>&1; then
+    exec "$@"
+  else
+    echo "'$1' is not a known function name or command" >&2
+    exit 1
+  fi
+}
+
+COMPREPLY=( $( compgen -A function | egrep -v '(main|include)') )
+echo ${COMPREPLY[0]}
+echo ${COMPREPLY[*]}
+main "$@"

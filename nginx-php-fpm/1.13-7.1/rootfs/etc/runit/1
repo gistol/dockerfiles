@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+set -eux
+
+/bin/run-parts --exit-on-error /etc/cont-init.d

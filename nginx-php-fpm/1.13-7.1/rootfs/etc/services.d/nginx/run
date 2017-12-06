@@ -1,0 +1,6 @@
+#!/usr/bin/execlineb -P
+
+foreground { s6-echo "[services.d/nginx]" }
+foreground { s6-mkdir -p /run/nginx }
+
+nginx -g "daemon off;"

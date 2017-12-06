@@ -1,0 +1,8 @@
+#!/usr/bin/execlineb -S1
+
+# Service should bring the container down when it crashes or receive SIGKILL
+
+if { s6-test ${1} -ne 0 }
+if { s6-test ${1} -ne 256 }
+
+s6-svscanctl -t /var/run/s6/services
