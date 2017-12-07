@@ -1,0 +1,11 @@
+#!/bin/execlineb -S1
+# https://github.com/dockage/runit-scripts/blob/master/scripts/usr/bin/runit-enable-service
+
+ifelse -n { s6-test ${#} -eq 1 }
+
+{
+  if { s6-echo -- "Usage: ${0} SERVICE_NAME" }
+  exit 1
+}
+#
+# foreground { echo $1  }

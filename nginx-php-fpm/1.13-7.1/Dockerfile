@@ -21,9 +21,8 @@ RUN set -xe \
         su-exec \
         tar \
     \
-    && S6_OVERLAY_VERSION=1.21.2.1 \
-    && curl -sSfL https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz \
-        | tar xzf - -C / \
+    && apk add --no-cache runit \
+    && mkdir -p /etc/runit \
     \
     && addgroup -g ${APP_GROUP_ID} -S ${APP_GROUP} \
     && adduser -D -S -h ${APP_USER_HOME} -s ${APP_USER_SHELL} -u ${APP_USER_ID} -G ${APP_GROUP} ${APP_USER}
