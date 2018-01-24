@@ -88,6 +88,11 @@ RUN set -xe ;\
     mkdir -p /etc/{fix-attrs.d,cont-init.d,services.d,cont-finish.d} ;\
     apk del .fetch-deps
 
+RUN set -xe \
+    \
+    && curl -sS -o /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/master/wait-for \
+    && chmod +x /usr/bin/wait-for
+
 COPY rootfs /
 
 CMD ["/init"]
