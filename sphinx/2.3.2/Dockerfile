@@ -90,9 +90,13 @@ RUN set -xe ;\
 
 RUN set -xe \
     \
+    && apk add --no-cache --virtual .build_deps curl \
     && curl -sS -o /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/master/wait-for \
-    && chmod +x /usr/bin/wait-for
+    && chmod +x /usr/bin/wait-for \
+    && apk del .build_deps
 
 COPY rootfs /
+
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
 CMD ["/init"]

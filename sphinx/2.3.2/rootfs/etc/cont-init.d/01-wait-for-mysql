@@ -1,0 +1,9 @@
+#!/usr/bin/execlineb -P
+
+with-contenv
+multisubstitute {
+  importas -i SQL_HOST SQL_HOST
+  importas -i SQL_PORT SQL_PORT
+}
+foreground { s6-echo "Waiting for MySQL ${SQL_HOST}:${SQL_PORT}" }
+wait-for ${SQL_HOST}:${SQL_PORT} -t 300

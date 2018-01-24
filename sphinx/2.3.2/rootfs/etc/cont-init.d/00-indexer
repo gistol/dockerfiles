@@ -1,6 +1,0 @@
-#!/usr/bin/execlineb -P
-
-with-contenv
-wait-for ${SQL_HOST}:${SQL_PORT} -t 300 -- echo "[init] MySQL is up"
-s6-setuidgid sphinx
-indexer --config /etc/sphinx/sphinx.conf --all --rotate
